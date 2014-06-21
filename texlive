@@ -1,0 +1,6 @@
+tlmgr list --only-installed > installed_texlive_packages.txt
+
+cat installed_texlive_packages.txt | while read LINE; do
+  PACKAGE=$(echo $LINE | cut -d " " -f 2 | cut -d ":" -f 1);
+  tlmgr install $PACKAGE;
+done
